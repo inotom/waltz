@@ -1,0 +1,21 @@
+<% provide(:title, "Edit #{@worktype.name}") %>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <h2 class="page-header">Edit <%= @worktype.name %></h2>
+    <%= form_for(@worktype) do |f| %>
+      <%= render 'fields', f: f %>
+      <div class="submit-btn-container">
+        <%= f.submit 'Update', class: 'btn btn-primary' %>
+      </div>
+    <% end %>
+    <p class="delete-link delete-worktype">
+      <%= link_to 'Delete', @worktype, method: :delete,
+                                       data: { confirm: "You sure?" },
+                                       title: @worktype.name %>
+    </p>
+    <p class="back-link">
+      <%= link_to 'Back', configs_path %>
+    </p>
+  </div>
+</div>

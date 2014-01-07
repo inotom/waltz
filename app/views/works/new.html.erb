@@ -1,0 +1,16 @@
+<% provide(:title, 'Create Work') %>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <h2 class="page-header">Create Work</h2>
+    <%= form_for(@work) do |f| %>
+      <%= render 'new_fields', f: f %>
+      <div class="submit-btn-container">
+        <%= f.submit 'Create', class: 'btn btn-primary' %>
+      </div>
+    <% end %>
+    <p class="back-link">
+      <%= link_to 'Back', root_path %>
+    </p>
+  </div>
+</div>

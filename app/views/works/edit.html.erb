@@ -1,0 +1,21 @@
+<% provide(:title, "Edit #{@work.title}") %>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <h2 class="page-header">Edit <%= @work.title %></h2>
+    <%= form_for(@work) do |f| %>
+      <%= render 'edit_fields', f: f %>
+      <div class="submit-btn-container">
+        <%= f.submit 'Update', class: 'btn btn-primary' %>
+      </div>
+    <% end %>
+    <p class="delete-link delete-work">
+      <%= link_to 'Delete', @work, method: :delete,
+                                   data: { confirm: "You sure?" },
+                                   title: @work.title %>
+    </p>
+    <p class="back-link">
+      <%= link_to 'Back', year_path(@year) %>
+    </p>
+  </div>
+</div>

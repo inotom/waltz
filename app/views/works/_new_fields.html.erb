@@ -1,0 +1,33 @@
+<%= render 'shared/error_messages', object: f.object %>
+<div class="field-box">
+  <%= f.label :title %>
+  <%= f.text_field :title, class: 'form-control' %>
+</div>
+<div class="field-box date-select-box">
+  <%= f.label :start_date %>
+  <%= f.date_select :start_date %>
+</div>
+<% if @orderers %>
+  <div class="field-box">
+    <%= f.label :orderer_id %>
+    <%= f.collection_select :orderer_id, @orderers, :id, :name, {}, { class: 'form-control' } %>
+  </div>
+<% else %>
+  <p>You must create a orderer.<%= link_to 'Configs', configs_path %></p>
+<% end %>
+<% if @worktypes %>
+  <div class="field-box">
+    <%= f.label :worktype_id %>
+    <%= f.collection_select :worktype_id, @worktypes, :id, :name, {}, { class: 'form-control' } %>
+  </div>
+<% else %>
+  <p>You must create a worktype.<%= link_to 'Configs', configs_path %></p>
+<% end %>
+<div class="field-box">
+  <%= f.label :quote_amount %>
+  <%= f.text_field :quote_amount, class: 'form-control' %>
+</div>
+<div class="field-box">
+  <%= f.label :memo %>
+  <%= f.text_area :memo, rows: 5, class: 'form-control' %>
+</div>

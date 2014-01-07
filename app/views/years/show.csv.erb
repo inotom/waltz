@@ -1,0 +1,21 @@
+<%
+
+require 'csv'
+
+csv_string = "タイトル,開始日,終了日,請求日,領収日,発注者,タイプ,見積額,領収額,備考\n"
+@year.works.each do |work|
+  csv_string += CSV.generate do |csv|
+    csv << [work.title,
+            work.start_date,
+            work.end_date,
+            work.claim_date,
+            work.receipt_date,
+            work.orderer_id,
+            work.worktype_id,
+            work.quote_amount,
+            work.receipt_amount,
+            work.memo]
+  end
+end
+
+%><%= csv_string %>

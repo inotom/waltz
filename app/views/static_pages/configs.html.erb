@@ -1,0 +1,45 @@
+<% provide(:title, 'Configs') %>
+<h2 class="page-header">Configs</h2>
+
+<div class="row configs-row configs-row-1">
+  <div class="col-md-4 configs-col configs-container config-year">
+    <header class="config-header">
+      <h3 class="config-title">Years</h3>
+      <%= form_tag years_path do %>
+        <%= submit_tag 'Create Year', class: 'btn btn-sm btn-primary create-year-btn' %>
+      <% end %>
+    </header>
+    <% if @year && @year.errors.any? %>
+      <%= render 'shared/error_messages', object: @year %>
+    <% end %>
+    <div class="list-group">
+      <% @years.each do |year| %>
+        <%= link_to "#{year.year}年", year_path(year), class: 'list-group-item' %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="col-md-4 configs-col configs-container config-orderer">
+    <header class="config-header">
+      <h3 class="config-title">Orderers</h3>
+      <%= link_to 'Create Orderer', new_orderer_path, class: 'btn btn-sm btn-primary create-orderer' %>
+    </header>
+    <div class="list-group">
+      <% @orderers.each do |orderer| %>
+        <%= link_to orderer.name, edit_orderer_path(orderer), class: "list-group-item color-#{orderer.color_index}" %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="col-md-4 configs-col configs-container config-worktype">
+    <header class="config-header">
+      <h3 class="config-title">Worktypes</h3>
+      <%= link_to 'Create Worktype', new_worktype_path, class: 'btn btn-sm btn-primary create-worktype' %>
+    </header>
+    <div class="list-group">
+      <% @worktypes.each do |worktype| %>
+        <%= link_to worktype.name, edit_worktype_path(worktype), class: 'list-group-item' %>
+      <% end %>
+    </div>
+  </div>
+</div>

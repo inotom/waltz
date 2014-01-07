@@ -1,0 +1,9 @@
+<%= render 'shared/error_messages', object: f.object %>
+<div class="field-box">
+  <%= f.label :name %>
+  <%= f.text_field :name, class: 'form-control' %>
+</div>
+<div class="field-box">
+  <%= f.label :color_index %>
+  <%= f.select :color_index, Color::INDEXS, {}, { class: 'form-control color-select' } %>
+</div>
